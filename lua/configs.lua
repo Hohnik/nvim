@@ -2,18 +2,21 @@ vim.g.mapleader = " "
 
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
+vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set number")
 vim.cmd("set relativenumber")
 
+vim.cmd("set foldmethod=expr")
+vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
+vim.cmd("set nofoldenable")
 
-vim.keymap.set('n', '<Tab>', '<C-^>', {})
-vim.keymap.set('n', '<C-h>', "<C-w>h", {})
-vim.keymap.set('n', '<C-j>', "<C-w>j", {})
-vim.keymap.set('n', '<C-k>', "<C-w>k", {})
-vim.keymap.set('n', '<C-l>', "<C-w>l", {})
 vim.keymap.set('i', 'jk', "<Esc>", {})
+vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv", {})
+vim.keymap.set('v', "K", ":m '<-2<CR>gv=gv", {})
+
+--vim.api.nvim_create_autocmd()
+
 
 local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
@@ -23,19 +26,19 @@ end
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
-    "PlenaryTestPopup",
-    "help",
-    "lspinfo",
-    "man",
-    "notify",
     "qf",
+    "man",
+    "help",
     "query",
-    "spectre_panel",
+    "notify",
+    "lspinfo",
     "startuptime",
-    "tsplayground",
-    "neotest-output",
     "checkhealth",
+    "tsplayground",
+    "spectre_panel",
+    "neotest-output",
     "neotest-summary",
+    "PlenaryTestPopup",
     "neotest-output-panel",
   },
   callback = function(event)

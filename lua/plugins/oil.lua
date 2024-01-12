@@ -8,6 +8,6 @@ return {
         ["h"] = "actions.parent",
       },
     })
-    vim.keymap.set("n", "-", "<CMD>Oil<CR>", {})
+    vim.keymap.set("n", "<C-p>", "<CMD>Oil<CR>", {})
   end,
 }
