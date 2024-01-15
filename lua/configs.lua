@@ -8,41 +8,42 @@ vim.cmd("set number")
 vim.cmd("set relativenumber")
 
 vim.cmd("set foldmethod=expr")
-vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
+vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
 vim.cmd("set nofoldenable")
 
-vim.keymap.set('i', 'jk', "<Esc>", {})
-vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv", {})
-vim.keymap.set('v', "K", ":m '<-2<CR>gv=gv", {})
+vim.keymap.set("i", "jk", "<Esc>", {})
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {})
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {})
+
+vim.diagnostic.config({ virtual_text = { severity = vim.diagnostic.severity.ERROR } })
 
 --vim.api.nvim_create_autocmd()
 
-
 local function augroup(name)
-  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+	return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("close_with_q"),
-  pattern = {
-    "qf",
-    "man",
-    "help",
-    "query",
-    "notify",
-    "lspinfo",
-    "startuptime",
-    "checkhealth",
-    "tsplayground",
-    "spectre_panel",
-    "neotest-output",
-    "neotest-summary",
-    "PlenaryTestPopup",
-    "neotest-output-panel",
-  },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-  end,
+	group = augroup("close_with_q"),
+	pattern = {
+		"qf",
+		"man",
+		"help",
+		"query",
+		"notify",
+		"lspinfo",
+		"startuptime",
+		"checkhealth",
+		"tsplayground",
+		"spectre_panel",
+		"neotest-output",
+		"neotest-summary",
+		"PlenaryTestPopup",
+		"neotest-output-panel",
+	},
+	callback = function(event)
+		vim.bo[event.buf].buflisted = false
+		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+	end,
 })
