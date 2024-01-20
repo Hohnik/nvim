@@ -11,6 +11,8 @@ vim.cmd("set nohlsearch")
 vim.cmd("set incsearch")
 vim.cmd("set columns=100")
 vim.cmd("set cursorline")
+vim.cmd("set ignorecase")
+vim.cmd("set smartcase")
 
 vim.cmd("set foldmethod=expr")
 vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
