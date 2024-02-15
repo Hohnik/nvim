@@ -18,7 +18,7 @@ return {
 			sections = {
 				lualine_b = { "branch", "pyenv()" },
 				lualine_c = { "buffers" },
-				lualine_x = {},
+				lualine_x = { "require('venv-selector').get_active_venv()" },
 				lualine_y = { "diff" },
 				lualine_z = { "os.date('%H:%M')" },
 			},
