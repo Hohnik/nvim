@@ -1,12 +1,12 @@
 return {
   "linux-cultist/venv-selector.nvim",
   dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   opts = {
     auto_refresh = true,
-    name = { "envs", "venv", ".venv", "pong" },
+    -- name = { "envs", "venv", ".venv", "pong" },
     parents = 1,
-    path = "/Users/niklas/miniforge3",
+    path = "/Users/niklas/miniforge3/envs",
     anaconda_base_path = "/Users/niklas/miniforge3",
     anaconda_envs_path = "/Users/niklas/miniforge3/envs",
   },
